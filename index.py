@@ -12,7 +12,7 @@ except Exception as e:
     print(e)
     exit()
 
-bot = telebot.TeleBot('1807234639:AAE4pAHjWfnLhzb6vVIPgytyQVvk62haBy0')
+bot = telebot.TeleBot('API KEY')
 
 def parseInfo(vin):
     result = "VIN: " + vin.num + "\n"
