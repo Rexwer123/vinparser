@@ -109,11 +109,13 @@ class DB:
     def __init__(self):
         #Создаём соединение с монго при инициализации объекта класса
         self.conn = pymongo.MongoClient('localhost', 27017)
+        #УДАЛИТЬ ОТСЮДА
         try:
             self.conn.cars.cars.insert_many(testList)
         except Exception as e:
             #Обработка ошибок записи
             print(e)
+        #КОНЕЦ
 
     def assembleResult(self, responseString, crashes):
         for crash in crashes:
