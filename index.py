@@ -1,10 +1,11 @@
+#Импортируем библиотеки
 import telebot
 import re
 from vininfo import Vin
 from db import DB
 from colors import colors
 
-
+#Пытаемся создать соединение с базой, инициализируя объект класса DB
 try:
     db = DB()
     print(colors.OKGREEN + 'Connected to the database' + colors.BOLD + ' CARS ' + colors.ENDC + colors.OKGREEN + 'at http://localhost:27017\n' + colors.ENDC)
@@ -13,6 +14,7 @@ except Exception as e:
 
 bot = telebot.TeleBot('1818558003:AAG1o9g-tGdc-uPcUDl1RAqWh7Vnrce5k7M')
 
+#Проверяем валидность VIN
 def checkVIN(vinNumber):
     try:
         return Vin(vinNumber).verify_checksum()
@@ -33,4 +35,5 @@ def get_text_messages(message):
         else:
             bot.send_message(message.from_user.id, "Чексумма VIN не совпала, попробуйте другой")
 
+#Включаем режим работы бота без задержек
 bot.polling(none_stop=False, interval=0)
